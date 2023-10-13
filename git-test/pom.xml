@@ -16,6 +16,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <git-test.version>1.0-SNAPSHOT</git-test.version>
     </properties>
 
     <parent>
@@ -24,4 +25,13 @@
         <version>2.7.5</version>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>git-test-controller</artifactId>
+                <version>${git-test.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
