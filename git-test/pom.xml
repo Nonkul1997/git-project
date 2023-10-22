@@ -10,13 +10,15 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>git-test-bootstrap</module>
-        <module>git-test-controller</module>
+        <module>git-test-mapper</module>
+        <module>git-test-service</module>
+        <module>git-test-web</module>
     </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <git-test.version>1.0-SNAPSHOT</git-test.version>
+        <mybatis.boot.version>2.2.2</mybatis.boot.version>
     </properties>
 
     <parent>
@@ -29,8 +31,13 @@
         <dependencies>
             <dependency>
                 <groupId>org.example</groupId>
-                <artifactId>git-test-controller</artifactId>
-                <version>${git-test.version}</version>
+                <artifactId>git-test-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.boot.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
