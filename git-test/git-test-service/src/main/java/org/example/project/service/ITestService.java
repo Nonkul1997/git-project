@@ -9,6 +9,6 @@ import java.util.List;
  * @date 2023/10/22 8:26
  * @description TestService
  */
-public interface TestService {
+public interface ITestService {
     List<Test> queryList();
 }

@@ -3,7 +3,7 @@ package org.example.project.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.example.project.mapper.TestMapper;
 import org.example.project.po.Test;
-import org.example.project.service.TestService;
+import org.example.project.service.ITestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +17,14 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class TestServiceImpl implements TestService {
+public class TestServiceImpl implements ITestService {
 
     @Autowired
     private TestMapper testMapper;
 
     @Override
     public List<Test> queryList() {
-        List<Test> list = testMapper.queryList();
+        List<Test> list = testMapper.selectList(null);
         log.info("result:{}, time:{}", list, new Date());
         return list;
     }

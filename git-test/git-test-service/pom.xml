@@ -20,7 +20,14 @@
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>git-test-mapper</artifactId>
-            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
     </dependencies>
 </project>
