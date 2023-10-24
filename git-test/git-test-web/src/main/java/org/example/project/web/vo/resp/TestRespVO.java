@@ -1,7 +1,8 @@
 package org.example.project.web.vo.resp;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
@@ -13,7 +14,8 @@ import java.util.Date;
  * @author xiaochuan
  * @since 2023/10/23 9:35
  */
-@Data
+@Getter
+@Setter
 @Schema(description = "Test基本出参")
 public class TestRespVO {
     @Schema(description = "id")

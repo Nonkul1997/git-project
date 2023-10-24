@@ -5,8 +5,11 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.util.Date;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -19,6 +22,7 @@ import lombok.experimental.Accessors;
  */
 @Getter
 @Setter
+@ToString
 @Accessors(chain = true)
 @TableName("t_test")
 public class TestPO {

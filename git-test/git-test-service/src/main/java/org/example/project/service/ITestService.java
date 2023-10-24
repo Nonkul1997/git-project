@@ -1,6 +1,9 @@
 package org.example.project.service;
 
 import org.example.project.po.TestPO;
+import org.example.project.service.dto.PageRespDTO;
+import org.example.project.service.dto.req.TestPageReqDTO;
+import org.example.project.service.dto.resp.TestRespDTO;
 
 import java.util.Date;
 import java.util.List;
@@ -17,6 +20,6 @@ public interface ITestService {
     void saveTest(String description);
     void updateTest(Integer id, String description);
     void deleteTest(Integer id);
-    TestPO getTest(Integer id);
-    List<TestPO> listTestByCondition(String description, Date createTime, Date updateTime);
+    TestRespDTO getTest(Integer id);
+    PageRespDTO<TestRespDTO> listTestByCondition(TestPageReqDTO reqDTO);
 }

@@ -1,6 +1,8 @@
 package org.example.project;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.example.project.mapper.TestMapper;
 import org.example.project.po.TestPO;
 import org.junit.jupiter.api.Test;
@@ -41,10 +43,20 @@ public class MyTest {
 
     @Test
     public void testLambdaQueryWrapper() {
-        LambdaQueryWrapper<TestPO> wrapper = new LambdaQueryWrapper<>();
-        wrapper.select(TestPO::getId, TestPO::getDescription)
+        testMapper.selectList(new LambdaQueryWrapper<TestPO>()
                 .in(TestPO::getId, List.of(1,2,5))
-                .like(TestPO::getDescription,"b");
-        testMapper.selectList(wrapper);
+                .like(TestPO::getDescription,"b")
+        );
+    }
+
+    @Test
+    public void testPageHelper(){
+        PageHelper.startPage(1,3);
+        PageInfo<TestPO> pageInfo = new PageInfo<>(testMapper.selectList(null));
+        System.out.println("当前页：" + pageInfo.getPageNum());
+        System.out.println("每页的数量：" + pageInfo.getPageSize());
+        System.out.println("总记录数：" + pageInfo.getTotal());
+        System.out.println("总页数：" + pageInfo.getPages());
+        System.out.println("结果集：" + pageInfo.getList());
     }
 }

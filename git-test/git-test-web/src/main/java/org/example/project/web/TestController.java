@@ -1,18 +1,19 @@
 package org.example.project.web;
 
-import cn.hutool.core.bean.BeanUtil;
+import com.alibaba.fastjson2.TypeReference;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.example.project.service.dto.req.TestPageReqDTO;
+import org.example.project.service.util.BeanUtil;
+import org.example.project.web.vo.PageRespVO;
+import org.example.project.web.vo.req.TestPageReqVO;
 import org.example.project.web.vo.resp.TestRespVO;
 import org.example.project.service.ITestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
-import java.util.List;
 
 /**
  * <p>
@@ -63,23 +64,16 @@ public class TestController {
     @Parameters({
             @Parameter(name = "id", description = "id")
     })
-    @GetMapping("/getTest")
+    @PostMapping("/getTest")
     public TestRespVO getTest(@RequestParam("id") Integer id) {
-        return BeanUtil.copyProperties(testService.getTest(id), TestRespVO.class);
+        return BeanUtil.copy(testService.getTest(id), TestRespVO.class);
     }
 
     @Operation(summary = "根据条件查询Test列表")
-    @Parameters({
-            @Parameter(name = "description", description = "描述"),
-            @Parameter(name = "createTime", description = "创建时间"),
-            @Parameter(name = "updateTime", description = "更新时间")
-    })
-    @GetMapping("/listTestByCondition")
-    public List<TestRespVO> listTestByCondition(@RequestParam(value = "description", required = false) String description,
-                                                @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(value =
-                                                        "createTime", required = false) Date createTime,
-                                                @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(value =
-                                                        "updateTime", required = false) Date updateTime) {
-        return BeanUtil.copyToList(testService.listTestByCondition(description, createTime, updateTime), TestRespVO.class);
+    @PostMapping("/listTestByCondition")
+    public PageRespVO<TestRespVO> listTestByCondition(@Validated @RequestBody TestPageReqVO reqVO) {
+        return BeanUtil.copy(testService.listTestByCondition(BeanUtil.copy(reqVO, TestPageReqDTO.class)),
+                new TypeReference<>() {
+        });
     }
 }
