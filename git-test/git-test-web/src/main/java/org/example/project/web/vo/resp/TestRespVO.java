@@ -6,12 +6,15 @@ import lombok.Data;
 import java.util.Date;
 
 /**
+ * <p>
+ * TestRespVO
+ * </p>
+ *
  * @author xiaochuan
- * @date 2023/10/23 9:35
- * @description TestQueryListRespVO
+ * @since 2023/10/23 9:35
  */
 @Data
-@Schema(description = "查询Test列表出参")
+@Schema(description = "Test基本出参")
 public class TestRespVO {
     @Schema(description = "id")
     private Integer id;

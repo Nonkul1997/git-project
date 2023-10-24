@@ -1,28 +1,49 @@
 package org.example.project.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
+import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import java.util.Date;
-
 /**
+ * <p>
+ * 测试表
+ * </p>
+ *
  * @author xiaochuan
- * @date 2023/10/22 6:46
- * @description Test
+ * @since 2023/10/24 18:41
  */
-@TableName("t_test")
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
-public class Test {
-    @TableId
+@TableName("t_test")
+public class TestPO {
+
+    /**
+     * 主键
+     */
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+
+    /**
+     * 描述
+     */
     @TableField("description")
     private String description;
+
+    /**
+     * 创建时间
+     */
     @TableField("create_time")
     private Date createTime;
+
+    /**
+     * 修改时间
+     */
     @TableField("update_time")
     private Date updateTime;
 }

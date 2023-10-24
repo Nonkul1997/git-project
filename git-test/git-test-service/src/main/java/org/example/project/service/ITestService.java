@@ -1,14 +1,22 @@
 package org.example.project.service;
 
-import org.example.project.po.Test;
+import org.example.project.po.TestPO;
 
+import java.util.Date;
 import java.util.List;
 
 /**
+ * <p>
+ * ITestService
+ * </p>
+ *
  * @author xiaochuan
- * @date 2023/10/22 8:26
- * @description TestService
+ * @since 2023/10/22 8:26
  */
 public interface ITestService {
-    List<Test> queryList();
+    void saveTest(String description);
+    void updateTest(Integer id, String description);
+    void deleteTest(Integer id);
+    TestPO getTest(Integer id);
+    List<TestPO> listTestByCondition(String description, Date createTime, Date updateTime);
 }
