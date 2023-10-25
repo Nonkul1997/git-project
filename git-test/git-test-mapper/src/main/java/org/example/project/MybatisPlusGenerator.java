@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.generator.config.TemplateType;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -55,6 +56,7 @@ public class MybatisPlusGenerator {
                             .columnNaming(NamingStrategy.underline_to_camel)
                             .mapperBuilder()
                             .enableFileOverride() //设置持久层可覆盖
+                            .mapperAnnotation(Mapper.class) //设置持久层注解
                 )
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .execute();

@@ -11,7 +11,6 @@ import org.example.project.service.dto.PageRespDTO;
 import org.example.project.service.dto.req.TestPageReqDTO;
 import org.example.project.service.dto.resp.TestRespDTO;
 import org.example.project.service.util.BeanUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -30,8 +29,11 @@ import java.util.Objects;
 @Service
 public class TestServiceImpl implements ITestService {
 
-    @Autowired
-    private TestMapper testMapper;
+    private final TestMapper testMapper;
+
+    public TestServiceImpl(TestMapper testMapper) {
+        this.testMapper = testMapper;
+    }
 
     @Override
     public void saveTest(String description) {

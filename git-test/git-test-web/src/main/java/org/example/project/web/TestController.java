@@ -11,7 +11,6 @@ import org.example.project.web.vo.PageRespVO;
 import org.example.project.web.vo.req.TestPageReqVO;
 import org.example.project.web.vo.resp.TestRespVO;
 import org.example.project.service.ITestService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +27,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/test")
 public class TestController {
 
-    @Autowired
-    private ITestService testService;
+    private final ITestService testService;
+
+    public TestController(ITestService testService) {
+        this.testService = testService;
+    }
 
     @Operation(summary = "新增Test")
     @Parameters({
