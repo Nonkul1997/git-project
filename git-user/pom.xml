@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>git-test</artifactId>
+    <artifactId>git-user</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>git-test-bootstrap</module>
-        <module>git-test-mapper</module>
-        <module>git-test-service</module>
-        <module>git-test-web</module>
+        <module>git-user-bootstrap</module>
+        <module>git-user-mapper</module>
+        <module>git-user-service</module>
+        <module>git-user-web</module>
     </modules>
 
     <properties>
@@ -55,17 +55,17 @@
             </dependency>
             <dependency>
                 <groupId>org.example</groupId>
-                <artifactId>git-test-web</artifactId>
+                <artifactId>git-user-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.example</groupId>
-                <artifactId>git-test-service</artifactId>
+                <artifactId>git-user-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.example</groupId>
-                <artifactId>git-test-mapper</artifactId>
+                <artifactId>git-user-mapper</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

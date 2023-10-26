@@ -24,11 +24,11 @@ public class MybatisPlusGenerator {
     private static final String ENTITY_PACKAGE_NAME = "po";
 
     // 当前项目java源码目录，自定义
-    private static final String PROJECT_JAVA_DIR = "git-test\\git-test-mapper\\src\\main\\java";
+    private static final String PROJECT_JAVA_DIR = "git-user\\git-user-mapper\\src\\main\\java";
     // 生成文件的父包名，自定义
     private static final String PARENT_PACKAGE_NAME = "org.example.project";
     // 需要映射的表名（多张表逗号分隔），自定义
-    private static final String TABLE_NAME = "t_test";
+    private static final String TABLE_NAME = "t_user";
 
     public static void main(String[] args) {
         FastAutoGenerator.create(URL, USERNAME, PASSWORD)

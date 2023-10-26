@@ -1,14 +1,14 @@
 server:
   # 端口
-  port: 31000
+  port: 32000
   servlet:
     # 上下文
-    context-path: /git-test
+    context-path: /git-user
 
 spring:
   # 项目名称
   application:
-    name: git-test
+    name: git-user
   # 当前环境
   profiles:
     active: dev
