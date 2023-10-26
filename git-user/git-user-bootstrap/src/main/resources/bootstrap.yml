@@ -1,0 +1,17 @@
+spring:
+  # 项目名称
+  application:
+    name: git-user
+  # 当前环境
+  profiles:
+    active: dev
+  # nacos默认监听${spring.application.name}.${file-extension}和${spring.application.name}-${spring.profiles.active}.${file-extension}
+  # 默认监听的配置优先级大于通过extension-configs配置的优先级，且extension-configs配置的 下标越大，优先级越高
+  cloud:
+    nacos:
+      config:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        namespace: 20562246-32e6-4308-b8a5-9688d3b38e89
+        group: git-user
+        file-extension: yml

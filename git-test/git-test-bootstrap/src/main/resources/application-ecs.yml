@@ -5,6 +5,13 @@ spring:
     url: jdbc:mysql://47.108.59.231:3306/ecs_database
     username: root
     password: 123456
+  cloud:
+    # nacos服务注册地址和命名空间
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        namespace: 87248ee1-75a2-4339-b58f-c31f94807719
 
 knife4j:
   # 开启生产环境保护策略

@@ -5,6 +5,13 @@ spring:
     url: jdbc:mysql://47.108.59.231:3306/dev_database
     username: root
     password: 123456
+  cloud:
+    # nacos服务注册地址和命名空间
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        namespace: 20562246-32e6-4308-b8a5-9688d3b38e89
 
 knife4j:
   # 开启生产环境保护策略

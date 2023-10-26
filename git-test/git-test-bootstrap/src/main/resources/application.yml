@@ -6,22 +6,14 @@ server:
     context-path: /git-test
 
 spring:
-  # 项目名称
-  application:
-    name: git-test
-  # 当前环境
-  profiles:
-    active: dev
   # jackson时间格式化
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   cloud:
-    # nacos地址和命名空间配置
-    nacos:
-      server-addr: 127.0.0.1:8848
-      discovery:
-        namespace: 20562246-32e6-4308-b8a5-9688d3b38e89
+    # openfeign使用OKHTTP连接池
+    openfeign:
+      okhttp:
         enabled: true
 
 mybatis-plus:
