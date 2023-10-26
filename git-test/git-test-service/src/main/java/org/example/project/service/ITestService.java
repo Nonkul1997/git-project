@@ -13,7 +13,7 @@ import org.example.project.service.dto.resp.TestRespDTO;
  * @since 2023/10/22 8:26
  */
 public interface ITestService {
-    void saveTest(String description);
+    void saveTest(String description, Integer userId);
     void updateTest(Integer id, String description);
     void deleteTest(Integer id);
     TestRespDTO getTest(Integer id);

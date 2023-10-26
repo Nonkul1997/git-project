@@ -2,6 +2,8 @@ package org.example.project.service;
 
 import org.example.project.service.dto.resp.UserRespDTO;
 
+import java.util.List;
+
 /**
  * <p>
  * IUserService
@@ -15,4 +17,5 @@ public interface IUserService {
     void updateUser(Integer id, String password, String telephone);
     void deleteUser(Integer id);
     UserRespDTO getUser(Integer id);
+    List<UserRespDTO> getUserListByIds(List<Integer> ids);
 }

@@ -21,4 +21,6 @@ public class TestRespDTO {
     private String description;
     private Date createTime;
     private Date updateTime;
+    private Integer userId;
+    private String username;
 }

@@ -26,4 +26,6 @@ public class TestRespVO {
     private Date createTime;
     @Schema(description = "更新时间")
     private Date updateTime;
+    @Schema(description = "用户名")
+    private String username;
 }

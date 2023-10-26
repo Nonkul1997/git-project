@@ -50,4 +50,10 @@ public class TestPO {
      */
     @TableField("update_time")
     private Date updateTime;
+
+    /**
+     * 用户id
+     */
+    @TableField("user_id")
+    private Integer userId;
 }

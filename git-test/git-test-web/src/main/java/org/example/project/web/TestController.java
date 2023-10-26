@@ -35,11 +35,13 @@ public class TestController {
 
     @Operation(summary = "新增Test")
     @Parameters({
-            @Parameter(name = "description", description = "描述")
+            @Parameter(name = "description", description = "描述"),
+            @Parameter(name = "userId", description = "用户id")
     })
     @PostMapping("/saveTest")
-    public void saveTest(@RequestParam("description") String description) {
-        testService.saveTest(description);
+    public void saveTest(@RequestParam("description") String description,
+                         @RequestParam("userId") Integer userId) {
+        testService.saveTest(description, userId);
     }
 
     @Operation(summary = "更新Test")

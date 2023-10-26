@@ -4,6 +4,8 @@ import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.example.project.api.UserApi;
+import org.example.project.api.vo.resp.UserApiRespVO;
 import org.example.project.mapper.TestMapper;
 import org.example.project.po.TestPO;
 import org.example.project.service.ITestService;
@@ -16,7 +18,10 @@ import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -31,13 +36,16 @@ public class TestServiceImpl implements ITestService {
 
     private final TestMapper testMapper;
 
-    public TestServiceImpl(TestMapper testMapper) {
+    private final UserApi userApi;
+
+    public TestServiceImpl(TestMapper testMapper, UserApi userApi) {
         this.testMapper = testMapper;
+        this.userApi = userApi;
     }
 
     @Override
-    public void saveTest(String description) {
-        testMapper.insert(new TestPO().setDescription(description));
+    public void saveTest(String description, Integer userId) {
+        testMapper.insert(new TestPO().setDescription(description).setUserId(userId));
     }
 
     @Override
@@ -75,13 +83,22 @@ public class TestServiceImpl implements ITestService {
                         DateUtil.endOfDay(updateTimeEnd) : null)
         );
         PageInfo<TestPO> pageInfo = new PageInfo<>(list);
-
         PageRespDTO<TestRespDTO> respDTO = new PageRespDTO<>();
         respDTO.setPageNum(pageInfo.getPageNum());
         respDTO.setPageSize(pageInfo.getPageSize());
         respDTO.setTotal(Long.valueOf(pageInfo.getTotal()).intValue());
         respDTO.setPages(pageInfo.getPages());
-        respDTO.setList(BeanUtil.copyList(pageInfo.getList(), TestRespDTO.class));
+
+        List<TestRespDTO> testList = BeanUtil.copyList(pageInfo.getList(), TestRespDTO.class);
+        List<UserApiRespVO> userList = userApi.getUserListByIds(testList.stream().map(TestRespDTO::getUserId).distinct().collect(Collectors.toList()));
+        Map<Integer,UserApiRespVO> userMap = userList.stream().collect(Collectors.toMap(UserApiRespVO::getId,
+                Function.identity(), (v1,v2) -> v1));
+        testList.forEach(t -> {
+            UserApiRespVO userApiRespVO = userMap.get(t.getUserId());
+            t.setUsername(Objects.isNull(userApiRespVO) ? null : userApiRespVO.getUsername());
+        });
+
+        respDTO.setList(testList);
         return respDTO;
     }
 }

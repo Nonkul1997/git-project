@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>git-user-api</module>
         <module>git-user-bootstrap</module>
         <module>git-user-mapper</module>
         <module>git-user-service</module>
@@ -66,6 +67,11 @@
             <dependency>
                 <groupId>org.example</groupId>
                 <artifactId>git-user-mapper</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>git-user-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

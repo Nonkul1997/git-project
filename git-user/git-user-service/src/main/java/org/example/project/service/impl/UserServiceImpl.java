@@ -10,6 +10,8 @@ import org.example.project.service.util.BeanUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 /**
  * <p>
  * UserServiceImpl
@@ -59,5 +61,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserRespDTO getUser(Integer id) {
         return BeanUtil.copy(userMapper.selectById(id), UserRespDTO.class);
+    }
+
+    @Override
+    public List<UserRespDTO> getUserListByIds(List<Integer> ids) {
+        return BeanUtil.copyList(userMapper.selectBatchIds(ids), UserRespDTO.class);
     }
 }
