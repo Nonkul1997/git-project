@@ -7,12 +7,16 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.project.service.dto.req.TestPageReqDTO;
 import org.example.project.service.util.BeanUtil;
+import org.example.project.web.refresh.ConfigurationPropertiesValue;
+import org.example.project.web.refresh.RefreshScopeValue;
 import org.example.project.web.vo.PageRespVO;
 import org.example.project.web.vo.req.TestPageReqVO;
 import org.example.project.web.vo.resp.TestRespVO;
 import org.example.project.service.ITestService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -29,8 +33,15 @@ public class TestController {
 
     private final ITestService testService;
 
-    public TestController(ITestService testService) {
+    private final RefreshScopeValue refreshScopeValue;
+
+    private final ConfigurationPropertiesValue configurationPropertiesValue;
+
+    public TestController(ITestService testService, RefreshScopeValue refreshScopeValue,
+                          ConfigurationPropertiesValue configurationPropertiesValue) {
         this.testService = testService;
+        this.refreshScopeValue = refreshScopeValue;
+        this.configurationPropertiesValue = configurationPropertiesValue;
     }
 
     @Operation(summary = "新增Test")
@@ -79,5 +90,23 @@ public class TestController {
         return BeanUtil.copy(testService.listTestByCondition(BeanUtil.copy(reqVO, TestPageReqDTO.class)),
                 new TypeReference<>() {
         });
+    }
+
+    @Operation(summary = "通过RefreshScope查询自定义Description")
+    @PostMapping("/getDescriptionByRefreshScopeValue")
+    public String getDescriptionByRefreshScopeValue() {
+        return refreshScopeValue.getDescription();
+    }
+
+    @Operation(summary = "通过ConfigurationProperties查询自定义Description")
+    @PostMapping("/getDescriptionByConfigurationProperties")
+    public String getDescriptionByConfigurationProperties() {
+        return configurationPropertiesValue.getDescription();
+    }
+
+    @Operation(summary = "通过ConfigurationProperties查询自定义Test")
+    @PostMapping("/getTestByConfigurationProperties")
+    public List<TestRespVO> getTestByConfigurationProperties() {
+        return configurationPropertiesValue.getCustomTests();
     }
 }

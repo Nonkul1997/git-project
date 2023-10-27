@@ -5,8 +5,8 @@ spring:
   # 当前环境
   profiles:
     active: dev
-  # nacos默认监听${spring.application.name}.${file-extension}和${spring.application.name}-${spring.profiles.active}.${file-extension}
-  # 默认监听的配置优先级大于通过extension-configs配置的优先级，且extension-configs配置的 下标越大，优先级越高
+  # nacos默认监听${spring.application.name}和${spring.application.name}.${file-extension}
+  # 和${spring.application.name}-${spring.profiles.active}.${file-extension}
   cloud:
     nacos:
       config:
