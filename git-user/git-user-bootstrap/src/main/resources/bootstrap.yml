@@ -10,8 +10,8 @@ spring:
   cloud:
     nacos:
       config:
-        enabled: true
+        enabled: false
         server-addr: 127.0.0.1:8848
-        namespace: 20562246-32e6-4308-b8a5-9688d3b38e89
+        namespace: a977fe7c-6575-474a-9fbe-51b9b275f12c
         group: git-user
         file-extension: yml

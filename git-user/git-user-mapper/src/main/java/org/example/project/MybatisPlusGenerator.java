@@ -16,7 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2023/10/24 16:08
  */
 public class MybatisPlusGenerator {
-    private static final String URL = "jdbc:mysql://47.108.59.231:3306/dev_database";
+    private static final String URL = "jdbc:mysql://47.106.64.47:3306/dev_database";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "123456";
     private static final String AUTHOR = "xiaochuan";

@@ -23,7 +23,7 @@ mybatis-plus:
 logging:
   # 打印sql语句
   level:
-    org.example.project.mapper: trace
+    org.example.project.mapper: debug
 
 knife4j:
   # 开启增强模式
