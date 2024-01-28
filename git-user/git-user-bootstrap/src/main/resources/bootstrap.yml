@@ -11,7 +11,7 @@ spring:
     nacos:
       config:
         enabled: false
-        server-addr: 127.0.0.1:8848
-        namespace: a977fe7c-6575-474a-9fbe-51b9b275f12c
+        server-addr: 47.106.64.47:8848
+        namespace: c9dea2e8-8172-4ccf-b3fc-282a59acf04b
         group: git-user
         file-extension: yml

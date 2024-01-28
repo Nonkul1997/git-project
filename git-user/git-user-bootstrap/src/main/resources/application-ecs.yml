@@ -10,8 +10,8 @@ spring:
     nacos:
       discovery:
         enabled: true
-        server-addr: 127.0.0.1:8848
-        namespace: 7146b181-e55e-4ee3-be82-8a1fc34e9013
+        server-addr: 47.106.64.47:8848
+        namespace: a1a03b72-adb3-45b9-8c09-8df9fec260d6
 
 knife4j:
   # 开启生产环境保护策略
