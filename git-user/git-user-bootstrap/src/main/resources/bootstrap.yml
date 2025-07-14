@@ -1,0 +1,17 @@
+spring:
+  # 项目名称
+  application:
+    name: git-user
+  # 当前环境
+  profiles:
+    active: dev
+  # nacos默认监听${spring.application.name}和${spring.application.name}.${file-extension}
+  # 和${spring.application.name}-${spring.profiles.active}.${file-extension}
+  cloud:
+    nacos:
+      config:
+        enabled: false
+        server-addr: localhost:8848
+        namespace: 3c750f48-1ec3-49c7-8f91-524d9c9f5a4b
+        group: git-user
+        file-extension: yml

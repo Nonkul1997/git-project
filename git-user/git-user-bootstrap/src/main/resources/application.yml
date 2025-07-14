@@ -1,0 +1,30 @@
+server:
+  # 端口
+  port: 32000
+  servlet:
+    # 上下文
+    context-path: /git-user
+
+spring:
+  # jackson时间格式化
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    # openfeign使用OKHTTP连接池
+    openfeign:
+      okhttp:
+        enabled: true
+
+mybatis-plus:
+  # 实体类设置别名
+  type-aliases-package: org.example.project.po
+
+logging:
+  # 打印sql语句
+  level:
+    org.example.project.mapper: debug
+
+knife4j:
+  # 开启增强模式
+  enable: true
